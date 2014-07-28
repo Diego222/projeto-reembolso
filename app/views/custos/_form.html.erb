@@ -10,17 +10,20 @@
       </ul>
     </div>
   <% end %>
+  <style type="text/css">
 
-  <div class="field">
-    <%= f.label :tipo %><br>
-   
-    <%= f.select :tipo, [['Alimentação'],
-                         ['Combustível',],
-                         ['Hospedagem',],
-                         ['Pedágio',],
-                         ['Estacionamento',],
-                         ['Outros Gastos',]]
-     %>
+  #content2{
+        display: none;
+      }
+  </style>
+
+  <%= link_to 'New Tipo', new_tipo_path %>
+
+
+    <div class="field">
+    <%= f.label :tipo_id %><br>
+    <%= f.collection_select(:tipo_id, Tipo.order(:description), :id, :description) %>
+  </div>
 
     
   </div>
@@ -32,10 +35,15 @@
     <%= f.label :valor %><br>
     <%= f.text_field :valor %>
   </div>
+  <div id = "content2">
   <div class="field">
     <%= f.label :viagem_id %><br>
     <%= f.text_field :viagem_id %>
   </div>
+</div>
+<div class="field">
+    <%= f.label :cover %><br>
+    <%= f.file_field :cover %>
   <div class="actions">
     <%= f.submit %>
   </div>

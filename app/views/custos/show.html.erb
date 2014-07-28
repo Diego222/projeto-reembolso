@@ -2,7 +2,7 @@
 
 <p>
   <strong>Tipo:</strong>
-  <%= @custo.tipo %>
+  <%= @custo.tipo.description %>
 </p>
 
 <p>
@@ -13,6 +13,9 @@
 <p>
   <strong>Valor:</strong>
   <%= @custo.valor %>
+</p>
+<p>
+	<%= image_tag @custo.cover.url(:thumb)%>
 </p>
 
 <p>

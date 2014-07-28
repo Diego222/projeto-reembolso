@@ -1,20 +1,20 @@
 <p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
-  <%= @viagem.name %>
+  <strong><h2>Destiny:</h2></strong>
+  <%= @viagem.name %> (<%= @viagem.date.strftime("%d-%m-%Y") %>)
 </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @viagem.date %>
-</p>
+
+
  
 
 <%= link_to 'Edit', edit_viagem_path(@viagem) %> |
 <%= link_to 'Back', viagems_path %>
 <td><%= link_to "Novo Custo de Viagem", new_viagem_custo_path(@viagem)%></td>
 <td><%= link_to "Custos da viagem", viagem_custos_path(@viagem)%></td>
+<strong><h2>Download:</h2></strong>
+<%= link_to "CSV", viagems_path(format: "csv") %>
+<%= link_to "Excel", viagems_path(format: "xls") %>
 
 
 

@@ -87,6 +87,6 @@ class CustosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def custo_params
-      params.require(:custo).permit(:tipo, :data, :valor, :viagem_id)
+      params.require(:custo).permit(:tipo, :data, :valor, :viagem_id, :tipo_id, :cover)
     end
 end

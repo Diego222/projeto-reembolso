@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724172306) do
+ActiveRecord::Schema.define(version: 20140728164022) do
 
   create_table "calendarios", force: true do |t|
     t.integer  "user_id"
@@ -34,25 +34,38 @@ ActiveRecord::Schema.define(version: 20140724172306) do
   add_index "calendars", ["viaem_id"], name: "index_calendars_on_viaem_id", using: :btree
 
   create_table "custos", force: true do |t|
-    t.string   "tipo"
     t.date     "data"
-    t.decimal  "valor",      precision: 10, scale: 0
+    t.decimal  "valor",              precision: 10, scale: 0
     t.integer  "viagem_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tipo_id"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
+  add_index "custos", ["tipo_id"], name: "index_custos_on_tipo_id", using: :btree
   add_index "custos", ["viagem_id"], name: "index_custos_on_viagem_id", using: :btree
 
   create_table "despesas", force: true do |t|
-    t.string   "tipo"
     t.date     "data"
     t.decimal  "valor",      precision: 10, scale: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tipo_id"
   end
 
+  add_index "despesas", ["tipo_id"], name: "index_despesas_on_tipo_id", using: :btree
+
   create_table "homes", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tipos", force: true do |t|
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
