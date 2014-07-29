@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728164022) do
+ActiveRecord::Schema.define(version: 20140729164853) do
 
   create_table "calendarios", force: true do |t|
     t.integer  "user_id"
@@ -70,6 +70,16 @@ ActiveRecord::Schema.define(version: 20140728164022) do
     t.datetime "updated_at"
   end
 
+  create_table "travels", force: true do |t|
+    t.string   "destino"
+    t.date     "data"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "travels", ["user_id"], name: "index_travels_on_user_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -98,9 +108,9 @@ ActiveRecord::Schema.define(version: 20140728164022) do
     t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id_id"
+    t.integer  "user_id"
   end
 
-  add_index "viagems", ["user_id_id"], name: "index_viagems_on_user_id_id", using: :btree
+  add_index "viagems", ["user_id"], name: "index_viagems_on_user_id", using: :btree
 
 end

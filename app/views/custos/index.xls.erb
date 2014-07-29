@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">User</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">Destino</Data></Cell>
+        <Cell><Data ss:Type="String">Descrição</Data></Cell>
+        <Cell><Data ss:Type="String">Valor</Data></Cell>
+      </Row>
+
+    <% @custos.each do |custo| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= current_user.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= custo.viagem.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= custo.viagem.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= custo.tipo.description %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= custo.valor %></Data></Cell>
+         
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :travels do
+    resources :custos
+  end
+
   resources :tipos
 
   resources :homes

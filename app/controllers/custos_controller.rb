@@ -9,8 +9,12 @@ class CustosController < ApplicationController
   def index
     @viagem = Viagem.find(params[:viagem_id])
     if current_user.present?
-      
       @custos = @viagem.custos
+      respond_to do |format|
+      format.html
+      format.csv #{ render text: @custos.to_csv }
+      format.xls  #{ send_data @viagems.to_csv(col_sep: "\t") }
+    end
       else
       redirect_to '/users/sign_in'
     end

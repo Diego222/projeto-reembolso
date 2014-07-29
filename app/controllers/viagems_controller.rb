@@ -6,14 +6,16 @@ class ViagemsController < ApplicationController
   def index
     if current_user.present?
     @viagems = current_user.viagems
-    else
-      redirect_to '/users/sign_in'
-    end
+
     respond_to do |format|
       format.html
       format.csv { render text: @viagems.to_csv }
-      format.xls  { send_data @viagems.to_csv(col_sep: "\t") }
+      format.xls  #{ send_data @viagems.to_csv(col_sep: "\t") }
     end
+    else
+      redirect_to '/users/sign_in'
+    end
+    
   end
 
   # GET /viagems/1
@@ -82,6 +84,6 @@ class ViagemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def viagem_params
-      params.require(:viagem).permit(:name, :date)
+      params.require(:viagem).permit(:name, :date, :user_id)
     end
 end

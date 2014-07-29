@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">ID</Data></Cell>
+        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Date</Data></Cell>
+      </Row>
+    <% @viagems.each do |viagem| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= viagem.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= viagem.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= viagem.date %></Data></Cell>
+        
+        
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

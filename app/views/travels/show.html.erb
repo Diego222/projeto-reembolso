@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Destino:</strong>
+  <%= @travel.destino %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @travel.data %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @travel.user %>
+</p>
+
+<%= link_to 'Edit', edit_travel_path(@travel) %> |
+<%= link_to 'Back', travels_path %>
+<td><%= link_to "Novo Custo de Viagem", new_travel_custo_path(@travel)%></td>
+<td><%= link_to "Custos da viagem", travel_custos_path(@travel)%></td>

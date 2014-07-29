@@ -1,10 +1,10 @@
-<%= form_for(@viagem) do |f| %>
-  <% if @viagem.errors.any? %>
+<%= form_for(@travel) do |f| %>
+  <% if @travel.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@viagem.errors.count, "error") %> prohibited this viagem from being saved:</h2>
+      <h2><%= pluralize(@travel.errors.count, "error") %> prohibited this travel from being saved:</h2>
 
       <ul>
-      <% @viagem.errors.full_messages.each do |message| %>
+      <% @travel.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,16 +12,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :destino %><br>
+    <%= f.text_field :destino %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.label :data %><br>
+    <%= f.date_select :data %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
     <%= f.collection_select(:user_id, User.order(:name), :id, :name) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

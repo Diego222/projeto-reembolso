@@ -1,0 +1,24 @@
+
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">User</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
+        <Cell><Data ss:Type="String">Destino</Data></Cell>
+        <Cell><Data ss:Type="String">Descrição</Data></Cell>
+        <Cell><Data ss:Type="String">Valor</Data></Cell>
+      </Row>
+
+    <% @custos.each do |custo| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= current_user.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= custo.viagem.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= custo.viagem.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= custo.tipo.description %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= custo.valor %></Data></Cell>
+         
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+
