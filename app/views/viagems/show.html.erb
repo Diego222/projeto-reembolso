@@ -1,20 +1,60 @@
+<div id="centralize">
 <p id="notice"><%= notice %></p>
-<p>
-  <strong><h2>Destiny:</h2></strong>
+
+<strong><h2>Destino:</h2></strong>
   <%= @viagem.name %> (<%= @viagem.date.strftime("%d-%m-%Y") %>)
-</p>
+
+  
+
+  <strong><h3>Custos</h3></strong>
+<table>
+   <thead>
+     <tr>
+       <th>Valor</th>
+       <th>Data</th>
+       <th>Tipo</th>
+       <th colspan="3"></th>
+     </tr>
+   </thead>
+
+   <tbody>
+
+     <% @viagem.custos.each do |custo| %>
+       <tr>
+         <td><%= custo.valor %></td>
+         <td><%= custo.data.strftime("%d-%m-%Y") %></td>
+         <td><%= custo.tipo.description %></td>
+         <td><%= link_to 'Show', [@viagem,custo] %></td>
+        <td><%= link_to 'Edit', edit_viagem_custo_path(@viagem,custo) %></td>
+         <td><%= link_to 'Destroy', [@viagem,custo], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+       </tr>
+     <% end %>
+   </tbody>
+</table>
+
+<p>
+    
+    <strong>Total custos:</strong> <%= @total %>
+  </p>
 
 
-
- 
 
 <%= link_to 'Edit', edit_viagem_path(@viagem) %> |
 <%= link_to 'Back', viagems_path %>
-<td><%= link_to "Novo Custo de Viagem", new_viagem_custo_path(@viagem)%></td>
-<td><%= link_to "Custos da viagem", viagem_custos_path(@viagem)%></td>
+<p>
+  <strong>Novo Custo:</strong>
+  </p>
+<%= link_to 'Novo Custo', new_viagem_custo_path(@viagem) %>
+<%= link_to 'Custos', viagem_custos_path(@viagem)%>
+
 <strong><h2>Download:</h2></strong>
-<%= link_to "CSV", viagems_path(format: "csv") %>
-<%= link_to "Excel", viagems_path(format: "xls") %>
+<%= link_to "Excel", viagem_export_path(@viagem, format: "xls") %>
+<%= link_to "CSV", viagem_export_path(@viagem, format: "csv") %>
+
+
+</div>
+
+
 
 
 

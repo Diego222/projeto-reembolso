@@ -1,3 +1,4 @@
+<div id="centralize">
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -14,7 +15,8 @@
   <strong>Valor:</strong>
   <%= @custo.valor %>
 </p>
-<p>
+<p>	
+	<strong>Nota Fiscal:</strong>
 	<%= image_tag @custo.cover.url(:thumb)%>
 </p>
 
@@ -23,4 +25,5 @@
 
 <%= link_to 'Edit', edit_custo_path(@custo) %> |
 <%= link_to 'Back', viagems_path %>
+</div>
 

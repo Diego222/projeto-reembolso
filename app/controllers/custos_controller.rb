@@ -12,7 +12,8 @@ class CustosController < ApplicationController
       @custos = @viagem.custos
       respond_to do |format|
       format.html
-      format.csv #{ render text: @custos.to_csv }
+      format.csv { send_data Custo.export_csv(@custos), type: 'text/csv; charset=utf-8; header=present', 
+       disposition: 'attachment; filename=contacts.csv' }
       format.xls  #{ send_data @viagems.to_csv(col_sep: "\t") }
     end
       else
@@ -23,6 +24,7 @@ class CustosController < ApplicationController
   # GET /custos/1
   # GET /custos/1.json
   def show
+    #@total= @viagem.custos.pluck(:valor).sum
   end
 
   # GET /custos/new

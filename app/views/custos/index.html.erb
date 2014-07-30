@@ -1,4 +1,5 @@
-<h1>Listing custos</h1>
+<div id="centralize">
+<h1>Custos</h1>
 
 <table>
   <thead>
@@ -26,11 +27,14 @@
 
 <br>
 
-<%= link_to 'New custo', new_viagem_custo_path %>
-<%= link_to 'Viagems', viagems_path %>
+<%= link_to 'Novo custo', new_viagem_custo_path %>
+<%= link_to 'Viagens', viagems_path %>
 <strong><h2>Download:</h2></strong>
 <%= link_to "CSV", viagem_custos_path(format: "csv") %>
 <%= link_to "Excel", viagem_custos_path(format: "xls") %>
+<%= link_to "CSV", viagem_export_path(@viagem, format: "csv") %>
+
+</div>
 
 
 

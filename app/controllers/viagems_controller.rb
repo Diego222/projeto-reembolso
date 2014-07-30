@@ -6,12 +6,12 @@ class ViagemsController < ApplicationController
   def index
     if current_user.present?
     @viagems = current_user.viagems
-
     respond_to do |format|
-      format.html
-      format.csv { render text: @viagems.to_csv }
-      format.xls  #{ send_data @viagems.to_csv(col_sep: "\t") }
-    end
+        format.html
+        format.csv { send_data Viagem.export_csv(@viagems), type: 'text/csv; charset=utf-8; header=present',
+          disposition: 'attachment; filename=contacts.csv'}
+        format.xls #{send_data @viagem.despesas.to_csv(col_sep: "\t") }
+      end
     else
       redirect_to '/users/sign_in'
     end
@@ -40,7 +40,7 @@ class ViagemsController < ApplicationController
   # POST /viagems.json
   def create
     @viagem = Viagem.new(viagem_params)
-
+    @viagem.user = current_user
     respond_to do |format|
       if @viagem.save
         format.html { redirect_to @viagem, notice: 'Viagem was successfully created.' }
@@ -76,14 +76,31 @@ class ViagemsController < ApplicationController
     end
   end
 
+  def export
+      if current_user.present?
+   @viagem = Viagem.find(params[:viagem_id])
+   @custo = @viagem.custos
+   @total= @viagem.custos.pluck(:valor).sum
+      respond_to do |format|
+        format.html
+        format.csv 
+        format.xls #{send_data @viagem.despesas.to_csv(col_sep: "\t") }
+      end
+      end
+    end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_viagem
       @viagem = Viagem.find(params[:id])
     end
 
+
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def viagem_params
       params.require(:viagem).permit(:name, :date, :user_id)
     end
+
+    
 end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :travels do
-    resources :custos
+  resources :viagems do
+    get 'export' , to: 'viagems#export', as: :export
   end
 
   resources :tipos
