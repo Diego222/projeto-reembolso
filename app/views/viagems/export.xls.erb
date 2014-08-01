@@ -7,21 +7,30 @@
   <Worksheet ss:Name="Sheet1">
     <Table>
       <Row>
-        <Cell><Data ss:Type="String">User</Data></Cell>
+        <Cell><Data ss:Type="String">Usuario</Data></Cell>
+        <Cell><Data ss:Type="String">Data</Data></Cell>
         <Cell><Data ss:Type="String">Destino</Data></Cell>
-        <Cell><Data ss:Type="String">Date</Data></Cell>
         <Cell><Data ss:Type="String">Total</Data></Cell>
+
       </Row>
-    
-      <% @viagems.each do |viagem| %>
       <Row>
         <Cell><Data ss:Type="String"><%= current_user.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= viagem.name %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= viagem.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= @viagem.date %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= @viagem.name %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= @total %></Data></Cell>
+      </Row>
+   
+    </Table>
+    <Table>
+      <Row>
+          <Cell><Data ss:Type="String">Custo</Data></Cell>
+          <Cell><Data ss:Type="String">Valor do custo</Data></Cell>
+      </Row>
+      <% @viagem.custos.each do |custo| %>
+        <Row>
+            <Cell><Data ss:Type="String"><%= custo.tipo.description %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= custo.valor %></Data></Cell>
         </Row>
-        
-
-        
     <% end %>
     </Table>
   </Worksheet>

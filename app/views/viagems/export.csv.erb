@@ -2,15 +2,13 @@
 headers = [
     "User",
     "Data",
-    "Local",
+    "Destino",
     "Total",
-    "Despesa",
-    "Valor da despesa"
   ]
 
   headers1 = [
-    "Valor Custo",
-    "Tipo"
+    "Tipo",
+    "Valor do custo"
   ]
 
   csv_output = CSV.generate do |csv|
@@ -30,8 +28,8 @@ headers = [
       @viagem.custos.each do |custo|
       csv << [
         
-          custo.valor,
-          custo.tipo.description
+          custo.tipo.description,
+          custo.valor
         ]
       
     end

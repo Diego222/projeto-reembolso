@@ -1,7 +1,7 @@
 class Custo < ActiveRecord::Base
   belongs_to :viagem
   belongs_to :tipo
-  validates :tipo, presence: true
+  #validates :tipo, presence: true
   validates :valor, presence: true
 
   has_attached_file :cover, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
@@ -22,7 +22,7 @@ def self.export_csv(custos)
     csv << ['Data','Destino','Valor']
     custos.each do |custo|
       csv << [    
-                custo.current_user.name,
+                
                 custo.data,
                 custo.viagem.name,
                 custo.valor

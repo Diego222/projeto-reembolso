@@ -8,9 +8,8 @@ class ViagemsController < ApplicationController
     @viagems = current_user.viagems
     respond_to do |format|
         format.html
-        format.csv { send_data Viagem.export_csv(@viagems), type: 'text/csv; charset=utf-8; header=present',
-          disposition: 'attachment; filename=contacts.csv'}
-        format.xls #{send_data @viagem.despesas.to_csv(col_sep: "\t") }
+        format.csv 
+        format.xls 
       end
     else
       redirect_to '/users/sign_in'
@@ -21,6 +20,7 @@ class ViagemsController < ApplicationController
   # GET /viagems/1
   # GET /viagems/1.json
   def show
+    @total= @viagem.custos.pluck(:valor).sum
   end
 
   # GET /viagems/new
