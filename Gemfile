@@ -35,7 +35,10 @@ group :test do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
+  gem 'shoulda-matchers', require: false
 end
+
+gem 'pry', :group => :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
