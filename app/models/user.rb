@@ -4,8 +4,10 @@ class User < ActiveRecord::Base
   has_many :viagems
 
   validates :name, presence: true
-  #has_many :calendarios, dependent: :destroy
-  #has_many :viagems, through: :calendarios
+  validates :password, numericality: true
+  validates_length_of :name, maximum: 20
+  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
