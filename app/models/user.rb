@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   has_many :viagems
 
   validates :name, presence: true
-  validates :password, numericality: true
+  validates :email, uniqueness: true
+  #validates :password, numericality: true
   validates_length_of :name, maximum: 20
   
 

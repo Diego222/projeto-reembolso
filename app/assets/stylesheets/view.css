@@ -4,6 +4,12 @@ float: right;
 text-align: right;
 margin-top: -30px;
 }
+ 
+#content5 {
+margin-left: -40px;
+text-align: center;
+margin-top: -40px;
+}
 
 #content{
 height: 50px;

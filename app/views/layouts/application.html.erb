@@ -14,7 +14,10 @@
 <div id="centralize">
 <div id="content">
 <% if user_signed_in? %>
-<p id="h2-home"><%= link_to "Home", homes_path %></p>
+<p id="h2-home"><%= link_to "Home", homes_path %>
+<%= link_to image_tag("face.png", size: "25x20", :class => "facebook_icon", :alt => "Facebook"), "http://www.facebook.com", :target => "_blank" %></p>
+<div id="content5">
+</div>
 <div id="content4">
 <strong><h1 id="h1-menu">Viagens</h1></strong>
 </div>
